@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+body, html {
+    height: 100%
+}
+
+body {
+    background-image: url('/../assets/login-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    padding: 0;
+    margin: 0;
+}
