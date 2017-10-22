@@ -9,5 +9,9 @@ module.exports = {
         sessions: 'sessions'
     },
     secret: 'this is my cookie secret',
+    jwtSecret: 'secretjwtkeythatwillneverbeguessed',
+    jwtSession: {
+        session: false
+    },
     secure: false
 }

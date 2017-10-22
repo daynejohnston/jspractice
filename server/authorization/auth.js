@@ -21,11 +21,28 @@ let authenticate = function (req, res, next) {
 
 let logout = function (req, res) {
     req.logout()
-    req.session.destroy()
-    res.redirect('/')
+    // the callback on destroy seems to be needed due to a bug with mongo-connect
+    // if the callback isn't provided, an error is thrown indicating that cb is not a function
+    req.session.destroy((err) => {
+      if (err) { console.log(err) }
+    })
+    res.redirect('/login')
+}
+
+let requiresAuth = function () {
+  return function (req, res, next) {
+    if (req.url === '/login') { return next() }
+
+    if (!req.isAuthenticated()) {
+      res.redirect('/login')
+    } else {
+      next()
+    }
+  }
 }
 
 module.exports = {
   authenticate: authenticate,
-  logout: logout
+  logout: logout,
+  requiresAuth: requiresAuth
 }

@@ -1,9 +1,11 @@
 const path = require('path')
-const auth = require('./auth')
+const auth = require('../authorization/auth')
 
 module.exports = (app, config) => {
 
     app.post('/login', auth.authenticate)
-    app.post('/logout', auth.logout)
-    app.get('/*', (req, res) => res.sendFile(path.join(`${config.rootPath}/dist/index.html`)))
+    app.get('/logout', auth.logout)
+    app.get('/*', 
+            auth.requiresAuth(), 
+            (req, res) => res.sendFile(path.join(`${config.rootPath}/dist/index.html`)))
 }
