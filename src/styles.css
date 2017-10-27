@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-body, html {
-    height: 100%
-}
 
-body {
-    background-image: url('/../assets/login-background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
-    padding: 0;
-    margin: 0;
+/*
+    Primary Color: #64dd17
+    Light Color: #9cff57
+    Dark Color: #1faa00
+    Text Color: #000000
+*/
+
+body, html {
+    height: 100%;
+    padding: 0px;
 }

@@ -9,11 +9,14 @@
   "scripts": {
     "ng": "ng",
     "postinstall": "ng build --aot -prod",
+    "prestart": "npm run build",
     "start": "node server.js",
     "build": "ng build",
+    "build:watch": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev-start": "concurrently \"npm run build:watch\" \"npm run start\""
   },
   "private": true,
   "dependencies": {
@@ -52,6 +55,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.2.0",
+    "concurrently": "^3.5.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",

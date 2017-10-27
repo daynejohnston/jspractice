@@ -1,90 +1,28 @@
-/*****************************************************************
-LOGIN PAGE
-*****************************************************************/
-.wrap
-{
-    width: 400px;
+/*
+    .rgba-primary-0 { color: rgba( 12, 12, 12,1) }	Main Primary color
+    .rgba-primary-1 { color: rgba(105,107,105,1) }
+    .rgba-primary-2 { color: rgba( 63, 63, 63,1) }
+    .rgba-primary-3 { color: rgba(  0,  0,  0,1) }
+    .rgba-primary-4 { color: rgba(  1,  2,  1,1) }
+*/
+
+#login-page {
+    width: 100%;
     height: 100%;
-    position: relative;
-    top: 200px;
-    margin: auto;
-    box-shadow: 0 0 10px #000;
-    z-index: 99;
-    background-color: rgba(0, 0, 0, .5);
-}
-
-p.form-title
-{
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    color: #FFFFFF;
-    margin-top: 5%;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-form
-{
-    width: 250px;
-    margin: 0 auto;
-}
-
-form.login input[type="text"], form.login input[type="password"]
-{
-    width: 100%;
+    background-image: url('/../../assets/login-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    padding: 0;
     margin: 0;
-    padding: 5px 10px;
-    background: 0;
-    border: 0;
-    border-bottom: 1px solid #FFFFFF;
-    outline: 0;
-    font-style: italic;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    color: #FFFFFF;
-    outline: 0;
+    color: #696B69;
 }
 
-form.login input[type="submit"]
-{
-    width: 100%;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-top: 16px;
-    outline: 0;
-    cursor: pointer;
-    letter-spacing: 1px;
+.login-form {
+    top: 35%;
+    width: 400px;
+    background: rgba( 0, 0, 0, .95);
+    padding: 15px;
+    box-shadow: 0px 0px 30px 30px rgba(0, 0, 0, .95); 
 }
 
-form.login input[type="submit"]:hover
-{
-    transition: background-color 0.5s ease;
-}
-
-form.login .remember
-{
-    float: left;
-    width: 100%;
-    margin: 10px 0 0 0;
-}
-form.login label, form.login a
-{
-    font-size: 12px;
-    font-weight: 400;
-    color: #FFFFFF;
-}
-
-form.login a
-{
-    transition: color 0.5s ease;
-}
-
-form.login a:hover
-{
-    color: #2ecc71;
-}

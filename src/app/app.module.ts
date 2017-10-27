@@ -11,7 +11,10 @@ import { AuthGuard } from './_guards/index';
 import { AuthenticationService, UserService } from './_services/index';
 
 import { HomeComponent } from './home/index';
+import { EncountersComponent } from './home/encounters/index';
+import { CharacterBuilderComponent } from './home/character-builder/index';
 import { NavbarComponent } from './navbar/index';
+import { SidebarComponent } from './sidebar/index';
 import { LoginComponent } from './login/index';
 
 @NgModule({
@@ -19,7 +22,10 @@ import { LoginComponent } from './login/index';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidebarComponent,
+    EncountersComponent,
+    CharacterBuilderComponent
   ],
   imports: [
     BrowserModule,
