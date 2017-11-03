@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../_services/index';
+import { AuthenticationService } from '../../../_services/index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'encounters.component.html',
-    styleUrls: ['./encounters.component.css']
+    templateUrl: 'characters.component.html',
+    styleUrls: ['./characters.component.css']
 })
 
-export class EncountersComponent {
+export class CharactersComponent {
 
     constructor(
         private route: ActivatedRoute,

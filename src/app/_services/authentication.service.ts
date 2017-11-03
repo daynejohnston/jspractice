@@ -23,8 +23,6 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
-        const user = localStorage.getItem('currentUser');
-
         return this.http.get('/logout')
                 .map((response: Response) => {
                   localStorage.removeItem('currentUser');

@@ -3,8 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../_services/index';
 
 @Component({
-    selector: 'app-character-builder',
-    moduleId: module.id,
     templateUrl: 'character-builder.component.html',
     styleUrls: ['./character-builder.component.css']
 })

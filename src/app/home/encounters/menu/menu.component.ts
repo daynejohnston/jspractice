@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../_services/index';
+import { AuthenticationService } from '../../../_services/index';
 
 @Component({
+    selector: 'app-encounters-menu',
     moduleId: module.id,
-    templateUrl: 'encounters.component.html',
-    styleUrls: ['./encounters.component.css']
+    templateUrl: 'menu.component.html',
+    styleUrls: ['./menu.component.css']
 })
 
-export class EncountersComponent {
+export class EncountersMenuComponent {
 
     constructor(
         private route: ActivatedRoute,
