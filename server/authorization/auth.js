@@ -1,5 +1,14 @@
 const passport = require('passport')
 
+let createReturnUser = function (user) {
+  let responseUser = {}
+  responseUser._id = user._id
+  responseUser.username = user.username
+  responseUser.firstName = user.firstName
+  responseUser.lastName = user.lastName
+  return responseUser
+}
+
 let authenticate = function (req, res, next) {
   if (req.body.username) {
     req.body.username = req.body.username.toLowerCase()
@@ -12,7 +21,7 @@ let authenticate = function (req, res, next) {
     req.login(user, function (err) {
       if (err) { return next(err) }
       req.session.user = user
-      res.status(200).send({success: true, user: user})
+      res.status(200).send({success: true, user: createReturnUser(user)})
     })
   })
 

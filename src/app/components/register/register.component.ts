@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../_services/index';
 
 @Component({
@@ -12,6 +12,7 @@ export class RegisterComponent {
     loading = false;
 
     constructor(
+        private route: ActivatedRoute,
         private router: Router,
         private userService: UserService
     ) { }
@@ -21,11 +22,14 @@ export class RegisterComponent {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    console.log('Registration successful');
-                    this.router.navigate(['/login']);
+                    const user = data.json().user;
+                    if (user) {
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        this.router.navigate(['/home'], { relativeTo: this.route});
+                    }
                 },
                 error => {
-                    console.log(error);
+                    console.log('Error: ', error);
                     this.loading = false;
                 }
             )

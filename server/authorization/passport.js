@@ -7,14 +7,14 @@ const User = mongoose.model('User')
 let getUserInfo = function (user) {
     return {
         _id: user._id,
-        userName: user.userName,
+        username: user.username,
         firstName: user.firstName,
         lastName: user.lastName
     }
 }
 
 let strategy = function (username, password, done) {
-  User.findOne({userName: username}).exec(function (err, user) {
+  User.findOne({username: username}).exec(function (err, user) {
     if (err) { return done(err) }
     if (!user) { return done(null, false) }
     if (!user.authenticate(password)) { return done(null, false) }

@@ -4,7 +4,7 @@ const encrypt = require('../../authorization/encryption')
 let userSchema = mongoose.Schema({
   firstName: {type: String, required: '{PATH} is required!'},
   lastName: {type: String, required: '{PATH} is required!'},
-  userName: {
+  username: {
     type: String,
     required: '{PATH} is required!',
     unique: true
@@ -35,10 +35,11 @@ function createDefaultUsers () {
       User.create({
         firstName: 'Admin',
         lastName: 'Admin',
-        userName: 'admin@example.com',
+        username: 'admin@example.com',
         salt: salt,
         hashed_pwd: hash,
-        roles: ['admin']})
+        roles: ['admin']
+      })
     }
   })
 }
