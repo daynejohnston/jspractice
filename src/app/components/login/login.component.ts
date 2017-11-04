@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../_services/index';
+import { AlertService, AuthenticationService } from '../../_services/index';
+
 
 @Component({
   templateUrl: 'login.component.html',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private router: Router,
+      private alert: AlertService,
       private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
@@ -27,11 +29,12 @@ export class LoginComponent implements OnInit {
       this.authenticationService.login(this.model.username, this.model.password)
           .subscribe(
               data => {
+                  console.log(data);
                   this.loading = false;
                   this.router.navigate([this.returnUrl], { relativeTo: this.route});
               },
               error => {
-                  console.log(error);
+                  this.alert.error('Invalid username/password combination');
                   this.loading = false;
               });
   }

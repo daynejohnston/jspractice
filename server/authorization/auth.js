@@ -15,8 +15,8 @@ let authenticate = function (req, res, next) {
   }
 
   let auth = passport.authenticate('local', function (err, user) {
-    if (err) { return next(err) }
-    if (!user) { res.send({ success: false }) }
+    if (err) { res.status(400).send({ success: false }) }
+    if (!user) { res.status(400).send({ success: false }) }
 
     req.login(user, function (err) {
       if (err) { return next(err) }

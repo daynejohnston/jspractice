@@ -1,4 +1,5 @@
 <div id="login-page">
+    <app-alert></app-alert>
     <div class="container login-form">
         <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">

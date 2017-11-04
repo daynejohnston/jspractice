@@ -13,6 +13,9 @@ import { RegisterComponent } from './components/register/index';
 import { HomeComponent } from './components/home/index';
 import { NavbarComponent } from './components/navbar/index';
 import { SidebarComponent } from './components/sidebar/index';
+import { AlertComponent } from './components/alert/index';
+
+import { AlertService } from './_services/index';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { SidebarComponent } from './components/sidebar/index';
     RegisterComponent,
     NavbarComponent,
     SidebarComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +34,7 @@ import { SidebarComponent } from './components/sidebar/index';
     AppRoutingModule
   ],
   providers: [
+    AlertService,
     AuthGuard,
     AuthenticationService,
     UserService
