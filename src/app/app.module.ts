@@ -1,21 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { EncountersModule } from './home/encounters/encounters.module';
-import { CharacterBuilderModule } from './home/character-builder/character-builder.module';
-
-import { AppComponent } from './app.component';
-import { routing } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AuthGuard } from './_guards/index';
 import { AuthenticationService, UserService } from './_services/index';
 
-import { HomeComponent } from './home/index';
-import { NavbarComponent } from './navbar/index';
-import { SidebarComponent } from './sidebar/index';
-import { LoginComponent } from './login/index';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/index';
+import { HomeComponent } from './components/home/index';
+import { NavbarComponent } from './components/navbar/index';
+import { SidebarComponent } from './components/sidebar/index';
 
 @NgModule({
   declarations: [
@@ -23,16 +19,13 @@ import { LoginComponent } from './login/index';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    EncountersModule,
-    CharacterBuilderModule,
-    routing,
-    NgbModule.forRoot()
+    AppRoutingModule
   ],
   providers: [
     AuthGuard,

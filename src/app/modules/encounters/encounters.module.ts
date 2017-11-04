@@ -1,10 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
 
-import { EncountersRouting } from './encounters.routing';
+import { EncountersRoutingModule } from './encounters-routing.module';
 
 import { EncountersComponent } from './encounters.component';
 import { EncountersMenuComponent } from './menu/index';
@@ -20,10 +17,7 @@ import { AuthGuard } from '../../_guards/index';
       CharactersComponent
   ],
   imports: [
-    BrowserModule,
-    HttpModule,
-    FormsModule,
-    EncountersRouting,
+    EncountersRoutingModule,
     NgbModule.forRoot()
   ],
   providers: [

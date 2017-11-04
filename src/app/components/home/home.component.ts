@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../_services/index';
+import { AuthenticationService } from '../../_services/index';
 
-import { User } from '../_models/index';
-import { UserService } from '../_services/index';
+import { User } from '../../_models/index';
+import { UserService } from '../../_services/index';
 
 @Component({
-    selector: 'app-home',
-    moduleId: module.id,
     templateUrl: 'home.component.html',
     styleUrls: ['./home.component.css']
 })
