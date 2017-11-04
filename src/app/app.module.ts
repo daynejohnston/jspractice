@@ -9,6 +9,7 @@ import { AuthenticationService, UserService } from './_services/index';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/index';
+import { RegisterComponent } from './components/register/index';
 import { HomeComponent } from './components/home/index';
 import { NavbarComponent } from './components/navbar/index';
 import { SidebarComponent } from './components/sidebar/index';
@@ -18,6 +19,7 @@ import { SidebarComponent } from './components/sidebar/index';
     AppComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
     NavbarComponent,
     SidebarComponent,
   ],
@@ -34,4 +36,5 @@ import { SidebarComponent } from './components/sidebar/index';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

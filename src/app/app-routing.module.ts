@@ -5,11 +5,13 @@ import { AuthGuard } from './_guards/index';
 
 import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
+import { RegisterComponent } from './components/register/index';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             { path: 'login', component: LoginComponent },
+            { path: 'register', component: RegisterComponent },
             { path: 'home', component: HomeComponent, canActivate: [AuthGuard],
                 children: [
                     { path: 'Encounters', loadChildren: './modules/encounters/encounters.module#EncountersModule' },

@@ -7,6 +7,7 @@ import { User } from '../_models/index';
 export class UserService {
     constructor(private http: Http) { }
 
+    /*
     getAll() {
         return this.http.get('/users').map((response: Response) => response.json());
     }
@@ -15,10 +16,13 @@ export class UserService {
         return this.http.get('/users/' + _id).map((response: Response) => response.json());
     }
 
+    */
+
     create(user: User) {
         return this.http.post('/users/register', user);
     }
 
+    /*
     update(user: User) {
         return this.http.put('/users/' + user._id, user);
     }
@@ -26,4 +30,5 @@ export class UserService {
     delete(_id: string) {
         return this.http.delete('/users/' + _id);
     }
+    */
 }
