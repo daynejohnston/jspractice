@@ -1,13 +1,15 @@
-<nav class="navbar navbar-light bg-faded">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Characters</a>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['Play']" routerLinkActive="active">Play</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['Characters']" routerLinkActive="active">Characters</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" [routerLink]="['List']" routerLinkActive="active">Encounter List</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-</nav>
+      </ul>
+
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>

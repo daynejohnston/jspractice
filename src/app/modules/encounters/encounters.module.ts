@@ -8,13 +8,17 @@ import { MenuComponent } from './menu/index';
 
 import { AuthGuard } from '../../_guards/index';
 import { CharactersComponent } from './characters/characters.component';
+import { ListComponent } from './list/list.component';
+import { PlayComponent } from './play/play.component';
 
 
 @NgModule({
   declarations: [
       EncountersComponent,
       MenuComponent,
-      CharactersComponent
+      CharactersComponent,
+      ListComponent,
+      PlayComponent
   ],
   imports: [
     EncountersRoutingModule,
