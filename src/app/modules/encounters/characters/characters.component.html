@@ -1,3 +1,12 @@
-<p>
-  characters works!
-</p>
+<div class="container">
+  
+  <button class="btn btn-outline-success float-right" (click)="showAddCharacterForm()">Add Character</button>
+  
+  <div>
+      <app-character-list *ngIf="showList"></app-character-list>
+      <app-add-character (cancelClicked)="onCancelClicked()" *ngIf="showList === false"></app-add-character>
+  </div>
+  
+    
+</div>
+  

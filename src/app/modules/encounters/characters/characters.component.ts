@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharactersComponent implements OnInit {
 
+  private showList = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showAddCharacterForm() {
+    this.showList = false;
+  }
+
+  onCancelClicked() {
+    this.showList = true;
   }
 
 }
