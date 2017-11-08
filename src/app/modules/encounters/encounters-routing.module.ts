@@ -10,7 +10,7 @@ import { AuthGuard } from '../../_guards/index';
     imports: [
         RouterModule.forChild([
             {
-                path: '', component: EncountersComponent
+                path: '', component: EncountersComponent, canActivate: [AuthGuard]
             }
         ])
     ]

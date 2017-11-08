@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { CharacterBuilderRouting } from './character-builder.routing';
+import { CharacterBuilderRouting } from './character-builder-routing.module';
 import { CharacterBuilderComponent } from './character-builder.component';
 
 @NgModule({

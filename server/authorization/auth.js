@@ -42,10 +42,11 @@ let requiresAuth = function () {
   return function (req, res, next) {
     if (req.url === '/login') { return next() }
 
-    if (!req.isAuthenticated()) {
-      res.redirect('/login')
-    } else {
+    if (req.isAuthenticated()) {
+      console.log(`Request is authenticated for ${req.url} for user ${req.session.user.username}`)
       next()
+    } else {
+      res.redirect('/login')
     }
   }
 }
