@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const encrypt = require('../../authorization/encryption')
 
-let userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   firstName: {type: String, required: '{PATH} is required!'},
   lastName: {type: String, required: '{PATH} is required!'},
   username: {

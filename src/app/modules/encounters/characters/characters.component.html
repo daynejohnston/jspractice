@@ -1,10 +1,12 @@
 <div class="container">
-  
-  <button class="btn btn-outline-success float-right" (click)="showAddCharacterForm()">Add Character</button>
-  
-  <div>
-      <app-character-list *ngIf="showList"></app-character-list>
-      <app-add-character (cancelClicked)="onCancelClicked()" *ngIf="showList === false"></app-add-character>
+
+  <div *ngIf="showList">
+      <button class="btn btn-outline-success float-right" (click)="showAddCharacterForm()">Add Character</button>
+      <app-character-list></app-character-list>
+  </div>
+
+  <div *ngIf="!showList">
+    <app-add-character (cancelClicked)="onCancelClicked()"></app-add-character>
   </div>
   
     
