@@ -1,33 +1,93 @@
 <form #form="ngForm" (submit)="submitForm(form)" novalidate>
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" 
-           name="name" 
-           class="form-control" 
-           [(ngModel)]="model.name">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" 
+                    name="name" 
+                    class="form-control" 
+                    [(ngModel)]="model.name">
+          </div>
+          <div class="form-group">
+            <label>Type</label>
+            <select class="form-control" name="characterType" [(ngModel)]="model.characterType">
+              <option *ngFor="let characterType of characterTypes">
+                {{ characterType }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Initiative Bonus</label>
+            <input type="number"
+                    name="initiativeBonus"
+                    class="form-control"
+                    [(ngModel)]="model.initiativeBonus">
+          </div>
+          <div class="form-group">
+            <label>Hit Points</label>
+            <input type="number"
+                    name="maxHitPoints"
+                    class="form-control"
+                    [(ngModel)]="model.maxHitPoints">
+          </div>
+      </div>
+      <div class="col-sm">
+        <fieldset class="form-group">
+          <legend>Armor Class</legend>
+          <div class="form-group">
+            <label>Base</label>
+            <input type="number"
+                  name="baseAC"
+                  class="form-control"
+                  [(ngModel)]="model.armorClass.base">
+          </div>
+          <div class="form-group">
+            <label>Touch</label>
+            <input type="number"
+                  name="touchAC"
+                  class="form-control"
+                  [(ngModel)]="model.armorClass.touch">
+          </div>
+          <div class="form-group">
+            <label>Flat Footed</label>
+            <input type="number"
+                  name="flatAC"
+                  class="form-control"
+                  [(ngModel)]="model.armorClass.flatFooted">
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-sm">
+        <fieldset class="form-group">
+          <legend>Saving Throw</legend>
+          <div class="form-group">
+              <label>Fortitude</label>
+              <input type="number"
+                      name="fortitudeSave"
+                      class="form-control"
+                      [(ngModel)]="model.savingThrow.fortitude">
+          </div>
+          <div class="form-group">
+            <label>Reflex</label>
+            <input type="number"
+                    name="reflexSave"
+                    class="form-control"
+                    [(ngModel)]="model.savingThrow.reflex">
+          </div>
+          <div class="form-group">
+            <label>Will</label>
+            <input type="number"
+                    name="willSave"
+                    class="form-control"
+                    [(ngModel)]="model.savingThrow.will">
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-outline-success float-right">Save</button>
+
   </div>
-  <div class="form-group">
-    <label>Type</label>
-    <select class="form-control" name="characterType" [(ngModel)]="model.characterType">
-      <option *ngFor="let characterType of characterTypes">
-        {{ characterType }}
-      </option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label>Hit Points</label>
-    <input type="number" 
-           name="maxHitPoints" 
-           class="form-control"
-           [(ngModel)]="model.maxHitPoints">
-  </div>
-  <div class="form-group">
-    <label>Initiative Bonus</label>
-    <input type="number"
-           name="initiativeBonus"
-           class="form-control"
-           [(ngModel)]="model.initiativeBonus">
-  </div>
-  <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
-  <button type="submit" class="btn btn-outline-success">Save</button>
 </form>

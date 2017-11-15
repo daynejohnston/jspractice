@@ -11,13 +11,13 @@ const put = function update(req, res) {
     res.json(req.character)
 }
 
-const get = function getAll(req, res) {
+const get = function get(req, res) {
     
-    const query = { owner: req.session.user._id }
+    const query = { owner_id: req.session.user._id }
 
     const handleResult = function (err, result) {
         if (err) { res.status(500).send({ error: err }); }
-
+        
         res.status(200).json(result)
     }
 

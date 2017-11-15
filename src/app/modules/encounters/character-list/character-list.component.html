@@ -7,8 +7,10 @@
         </tr>
       </thead>
       <tbody>
-        <td>Test</td>
-        <td>Green Blue Red</td>
+        <tr *ngFor="let character of characters">
+          <td>{{ character.name }}</td>
+          <td></td>
+        </tr>
       </tbody>
   </table>
 </div>

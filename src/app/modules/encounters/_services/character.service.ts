@@ -27,4 +27,10 @@ export class CharacterService {
                 .map(this.extractData)
                 .catch(this.handleError);
     }
+
+    getAll(): Observable<any> {
+        return this.http.get('/api/characters')
+                .map(this.extractData)
+                .catch(this.handleError);
+    }
 }
