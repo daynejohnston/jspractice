@@ -1,11 +1,33 @@
-<form>
+<form #form="ngForm" (submit)="submitForm(form)" novalidate>
   <div class="form-group">
     <label>Name</label>
-    <input type="text" name="name" class="form-control">
+    <input type="text" 
+           name="name" 
+           class="form-control" 
+           [(ngModel)]="model.name">
   </div>
   <div class="form-group">
-    <label>Tags</label>
-    <input type="text" name="tags" class="form-control">
+    <label>Type</label>
+    <select class="form-control" name="characterType" [(ngModel)]="model.characterType">
+      <option *ngFor="let characterType of characterTypes">
+        {{ characterType }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Hit Points</label>
+    <input type="number" 
+           name="maxHitPoints" 
+           class="form-control"
+           [(ngModel)]="model.maxHitPoints">
+  </div>
+  <div class="form-group">
+    <label>Initiative Bonus</label>
+    <input type="number"
+           name="initiativeBonus"
+           class="form-control"
+           [(ngModel)]="model.initiativeBonus">
   </div>
   <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+  <button type="submit" class="btn btn-outline-success">Save</button>
 </form>

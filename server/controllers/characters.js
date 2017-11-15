@@ -4,29 +4,21 @@ const handleError = function(err) {
     console.log(err)
 }
 
-const update = function update(req, res) {
-    let characterData = req.body
-    const query = { _id: characterData._id }
-    delete characterData._id
-    const options = { upsert: true, new: true, setDefaultsOnInsert: true }
-    
-    const handleResult = function (err, result) {
-        if (err) { res.status(500).send({error: err}); }
+const put = function update(req, res) {
+    req.character.name = req.body.name
+    req.character.save()
 
-        res.status(200).send(result)
-    }
-
-    Character.update(query, characterData, options, handleResult)
+    res.json(req.character)
 }
 
-const getAll = function getAll(req, res) {
-
+const get = function getAll(req, res) {
+    
     const query = { owner: req.session.user._id }
 
     const handleResult = function (err, result) {
         if (err) { res.status(500).send({ error: err }); }
 
-        res.status(200).send(result)
+        res.status(200).json(result)
     }
 
     Character.find(query)
@@ -35,37 +27,51 @@ const getAll = function getAll(req, res) {
     
 }
 
-const getById = function getById(req, res) {
-    const query = { _id: req.params.id, owner: req.session.user._id }
+const post = function post(req, res) {
+    var character = new Character(req.body)
+    character.owner_id = req.session.user._id
+    character.save()
 
-    const handleResult = function (err, result) {
-        if (err) { res.status(500).send({ error: err }); }
-
-        res.status(200).send(result)
-    }
-    
-    Character.findOne(query)
-             .exec(handleResult)
-             .catch(handleError)
+    res.status(201).send(character)
 }
 
 const remove = function remove(req, res) {
-    const query = { _id: req.params.id, owner: req.session.user._id }
+    req.character.remove((err) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(204).send('Removed')
+        }
+    })
+}
 
-    const handleResult = function (err, result) {
-        if (err) { res.status(500).send({ error: err }); }
+const getById = function getById(req, res) {
+    res.json(req.character)
+}
 
-        res.status(200).send(result)
+const findById = function (req, res, next) {
+    let query = { _id: req.params._id, owner_id: req.session.user._id }
+    let handleResult = function(err, character) {
+        if (err) {
+            res.status(500).send(err)
+        }
+        else if (character) {
+            req.character = character
+            next()
+        }
+        else {
+            res.status(404).send(`No such character with id: ${req.params._id}`)
+        }
     }
 
-    Character.remove(query)
-             .exec(handleResult)
-             .catch(handleError)
+    Character.findById(query, handleResult)
 }
 
 module.exports = {
-    update: update,
-    getAll: getAll,
+    post: post,
+    put: put,
+    get: get,
+    remove: remove,
     getById: getById,
-    remove: remove
+    findById: findById
 }

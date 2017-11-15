@@ -7,8 +7,8 @@ const passport = require('passport')
 module.exports = (app, config, store) => {
 
     app.use(cookieParser(config.secret))
-    app.use(bodyParser.urlencoded({extended: true}))
     app.use(bodyParser.json())
+    app.use(bodyParser.urlencoded({extended: true}))
     app.use(session(store))
     app.use(passport.initialize())
     app.use(passport.session())

@@ -1,20 +1,19 @@
 const path = require('path')
 const auth = require('../authorization/auth')
 const users = require('../controllers/users')
-const characters = require('../controllers/characters')
+const characterRouter = require('./routes/characterRoutes')()
 
-module.exports = (app, config) => {
+const routes = function (app, config) {
 
-    app.get('/api/character', auth.requiresAuth(), characters.getAll)
-    app.get('/api/character/:id', auth.requiresAuth(), characters.getById)
-    app.put('/api/character', auth.requiresAuth(), characters.update)
-    app.delete('/app/character/:id', auth.requiresAuth(), characters.remove)
-
+    app.use('/api/characters', auth.requiresAuth(), characterRouter)
+    
     app.post('/login', auth.authenticate)
     app.put('/users/register', users.register)
     app.get('/logout', auth.logout)
     app.get('/*', 
             auth.requiresAuth(), 
             (req, res) => res.sendFile(path.join(`${config.rootPath}/dist/index.html`)))
-            
+                
 }
+
+module.exports = routes

@@ -14,12 +14,8 @@ export class CharactersComponent implements OnInit {
   ngOnInit() {
   }
 
-  showAddCharacterForm() {
-    this.showList = false;
-  }
-
-  onCancelClicked() {
-    this.showList = true;
+  onShowForm() {
+    this.showList = !this.showList;
   }
 
 }

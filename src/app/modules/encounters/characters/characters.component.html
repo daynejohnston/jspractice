@@ -1,12 +1,12 @@
 <div class="container">
 
   <div *ngIf="showList">
-      <button class="btn btn-outline-success float-right" (click)="showAddCharacterForm()">Add Character</button>
+      <button class="btn btn-outline-success float-right" (click)="onShowForm()">Add Character</button>
       <app-character-list></app-character-list>
   </div>
 
   <div *ngIf="!showList">
-    <app-add-character (cancelClicked)="onCancelClicked()"></app-add-character>
+    <app-add-character (showForm)="onShowForm()"></app-add-character>
   </div>
   
     

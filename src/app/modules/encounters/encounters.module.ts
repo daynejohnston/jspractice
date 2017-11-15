@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { CharacterService } from './_services/character.service';
 
 import { EncountersRoutingModule } from './encounters-routing.module';
 
@@ -26,11 +29,13 @@ import { AddCharacterComponent } from './add-character/add-character.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     EncountersRoutingModule,
     NgbModule.forRoot()
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    CharacterService
   ],
   bootstrap: [EncountersComponent]
 })

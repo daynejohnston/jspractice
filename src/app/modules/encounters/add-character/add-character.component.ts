@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Character } from '../_models/character.model';
+import { NgForm } from '@angular/forms';
+import { CharacterService } from '../_services/character.service';
 
 @Component({
   selector: 'app-add-character',
@@ -7,15 +10,29 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AddCharacterComponent implements OnInit {
 
-  @Output() cancelClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private characterService: CharacterService ) { }
+
+  model: Character;
+  characterTypes = ['Enemy', 'NPC', 'Player'];
 
   ngOnInit() {
+    this.model = new Character();
+  }
+
+  submitForm(form: NgForm) {
+    this.characterService.create(this.model)
+          .subscribe(
+            data => {
+              this.showForm.emit(false);
+            },
+            err => console.log('error:', err)
+          );
   }
 
   cancel(): void {
-    this.cancelClicked.emit(false);
+    this.showForm.emit(false);
   }
 
 }
