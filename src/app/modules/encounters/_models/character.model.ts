@@ -1,6 +1,7 @@
 
 
 export class Character {
+    public _id: string;
     public name: string;
     public characterType: string;
     public maxHitPoints: number;

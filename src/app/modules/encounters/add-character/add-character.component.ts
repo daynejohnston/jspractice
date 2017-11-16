@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Character } from '../_models/character.model';
 import { NgForm } from '@angular/forms';
 import { CharacterService } from '../_services/character.service';
@@ -9,30 +9,52 @@ import { CharacterService } from '../_services/character.service';
   styleUrls: ['./add-character.component.css']
 })
 export class AddCharacterComponent implements OnInit {
-
-  @Output() showForm: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() model: Character;
+  @Output() showForm: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private characterService: CharacterService ) { }
-
-  model: Character;
+  editingName: boolean;
   characterTypes = ['Enemy', 'NPC', 'Player'];
 
   ngOnInit() {
-    this.model = new Character();
+    if (!this.model) { this.model = new Character(); }
+    this.editingName = true;
   }
 
   submitForm(form: NgForm) {
-    this.characterService.create(this.model)
-          .subscribe(
-            data => {
-              this.showForm.emit(false);
-            },
-            err => console.log('error:', err)
-          );
+    if (this.model._id) {
+      this.updateCharacter(this.model);
+    } else {
+      this.createCharacter(this.model);
+    }
+  }
+
+  createCharacter(character: Character) {
+    this.characterService.create(character)
+    .subscribe(
+      data => {
+        this.showForm.emit();
+      },
+      err => console.log('error:', err)
+    );
+  }
+
+  updateCharacter(character: Character) {
+    this.characterService.update(character)
+      .subscribe(
+        data => {
+          this.showForm.emit();
+        },
+        err => console.log('error: ', err)
+      );
   }
 
   cancel(): void {
-    this.showForm.emit(false);
+    this.showForm.emit();
+  }
+
+  toggleNameEdit(): void {
+    this.editingName = !this.editingName;
   }
 
 }

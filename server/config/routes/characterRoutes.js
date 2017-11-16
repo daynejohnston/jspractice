@@ -7,11 +7,11 @@ const routes = function () {
     characterRouter.route('/')
             .post(characters.post)
             .get(characters.get)
-            .put(characters.put)
 
     characterRouter.use('/:id', characters.findById)
     characterRouter.route('/:id')
             .get(characters.getById)
+            .put(characters.put)
             .delete(characters.remove)
 
     return characterRouter

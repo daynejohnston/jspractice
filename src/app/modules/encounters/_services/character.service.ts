@@ -14,7 +14,7 @@ export class CharacterService {
     }
 
     private handleError(error: any) {
-        console.error('post error: ', error);
+        console.error('error: ', error);
         return Observable.throw(error.statusText);
     }
 
@@ -26,6 +26,17 @@ export class CharacterService {
         return this.http.post('/api/characters', body, options)
                 .map(this.extractData)
                 .catch(this.handleError);
+    }
+
+    update(character: Character): Observable<any> {
+        const body = JSON.stringify(character);
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const options = new RequestOptions({ headers: headers });
+        const url = `/api/characters/${character._id}`;
+
+        return this.http.put(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
     }
 
     getAll(): Observable<any> {

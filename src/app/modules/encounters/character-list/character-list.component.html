@@ -8,7 +8,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let character of characters">
-          <td>{{ character.name }}</td>
+          <td (click)="onEditCharacter(character)">{{ character.name }}</td>
           <td></td>
         </tr>
       </tbody>

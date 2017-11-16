@@ -1,93 +1,95 @@
 <form #form="ngForm" (submit)="submitForm(form)" novalidate>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" 
-                    name="name" 
-                    class="form-control" 
-                    [(ngModel)]="model.name">
-          </div>
+  <div class="card">
+    <div class="card-header">
+      <h4 name="characterTitle" (click)="toggleNameEdit()" *ngIf="!editingName">{{ model.name || "Character Name" }}</h4>
+      <input appFocus type="text" 
+                      class="form-control form-control-lg"
+                      name="name" 
+                      [(ngModel)]="model.name" 
+                      *ngIf="editingName" 
+                      (blur)="toggleNameEdit()" 
+                      placeholder="Character Name" />
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm">
           <div class="form-group">
-            <label>Type</label>
-            <select class="form-control" name="characterType" [(ngModel)]="model.characterType">
+            <label>Allegiance</label>
+            <select class="form-control form-control-sm" name="characterType" [(ngModel)]="model.characterType">
               <option *ngFor="let characterType of characterTypes">
                 {{ characterType }}
               </option>
             </select>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
           <div class="form-group">
             <label>Initiative Bonus</label>
-            <input type="number"
-                    name="initiativeBonus"
-                    class="form-control"
-                    [(ngModel)]="model.initiativeBonus">
+            <input type="number" class="form-control form-control-sm" name="initiativeBonus" [(ngModel)]="model.initiativeBonus">
           </div>
           <div class="form-group">
             <label>Hit Points</label>
-            <input type="number"
-                    name="maxHitPoints"
-                    class="form-control"
-                    [(ngModel)]="model.maxHitPoints">
+            <input type="number" class="form-control form-control-sm" name="hitPoints" [(ngModel)]="model.maxHitPoints">
           </div>
-      </div>
-      <div class="col-sm">
-        <fieldset class="form-group">
-          <legend>Armor Class</legend>
+        </div>
+    
+        <div class="col-sm">
           <div class="form-group">
-            <label>Base</label>
-            <input type="number"
-                  name="baseAC"
-                  class="form-control"
-                  [(ngModel)]="model.armorClass.base">
+            <label>Armor Class</label>
+    
+            <div class="row">
+              <div class="col-sm">
+                <input class="form-control form-control-sm" type="number" name="base" [(ngModel)]="model.armorClass.base">
+                <small class="form-text text-muted">Base</small>
+              </div>
+              <div class="col-sm">
+                <input class="form-control form-control-sm" type="number" name="touch" [(ngModel)]="model.armorClass.touch">
+                <small class="form-text text-muted">Touch</small>
+              </div>
+              <div class="col-sm">
+                  <input class="form-control form-control-sm" type="number" name="flat" [(ngModel)]="model.armorClass.flatFooted">
+                  <small class="form-text text-muted">Flat Footed</small>
+              </div>
+            </div>
+
           </div>
+        </div>
+
+        <div class="col-sm">
           <div class="form-group">
-            <label>Touch</label>
-            <input type="number"
-                  name="touchAC"
-                  class="form-control"
-                  [(ngModel)]="model.armorClass.touch">
+            <label>Saving Throws</label>
+
+            <div class="row">
+              <div class="col-sm">
+                <input class="form-control form-control-sm" type="number" name="fortitude" [(ngModel)]="model.savingThrow.fortitude">
+                <small class="form-text text-muted">Fortitude</small>
+              </div>
+              <div class="col-sm">
+                <input class="form-control form-control-sm" type="number" name="reflex" [(ngModel)]="model.savingThrow.reflex">
+                <small class="form-text text-muted">Reflex</small>
+              </div>
+              <div class="col-sm">
+                <input class="form-control form-control-sm" type="number" name="will" [(ngModel)]="model.savingThrow.will">
+                <small class="form-text text-muted">Will</small>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Flat Footed</label>
-            <input type="number"
-                  name="flatAC"
-                  class="form-control"
-                  [(ngModel)]="model.armorClass.flatFooted">
-          </div>
-        </fieldset>
-      </div>
-      <div class="col-sm">
-        <fieldset class="form-group">
-          <legend>Saving Throw</legend>
-          <div class="form-group">
-              <label>Fortitude</label>
-              <input type="number"
-                      name="fortitudeSave"
-                      class="form-control"
-                      [(ngModel)]="model.savingThrow.fortitude">
-          </div>
-          <div class="form-group">
-            <label>Reflex</label>
-            <input type="number"
-                    name="reflexSave"
-                    class="form-control"
-                    [(ngModel)]="model.savingThrow.reflex">
-          </div>
-          <div class="form-group">
-            <label>Will</label>
-            <input type="number"
-                    name="willSave"
-                    class="form-control"
-                    [(ngModel)]="model.savingThrow.will">
-          </div>
-        </fieldset>
+        </div>
+
       </div>
     </div>
 
-    <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
-    <button type="submit" class="btn btn-outline-success float-right">Save</button>
+    <div class="card-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-outline-success float-right">Save</button>
+    </div>
 
   </div>
+
+  
 </form>
+
+Model Name: {{ model.name }}

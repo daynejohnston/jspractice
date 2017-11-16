@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CharacterService} from '../_services/character.service';
 import { Character } from '../_models/character.model';
 
@@ -8,7 +8,7 @@ import { Character } from '../_models/character.model';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit {
-
+  @Output() showForm: EventEmitter<Character> = new EventEmitter<Character>();
   private characters: Character[] = [];
 
   constructor(private characterService: CharacterService) { }
@@ -22,5 +22,11 @@ export class CharacterListComponent implements OnInit {
           err => console.log(err)
         );
   }
+
+  onEditCharacter(character: Character): void {
+    this.showForm.emit(character);
+  }
+
+
 
 }

@@ -16,6 +16,7 @@ import { ListComponent } from './list/list.component';
 import { PlayComponent } from './play/play.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { AddCharacterComponent } from './add-character/add-character.component';
+import { FocusDirective } from './_directives/focus.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddCharacterComponent } from './add-character/add-character.component';
       ListComponent,
       PlayComponent,
       CharacterListComponent,
-      AddCharacterComponent
+      AddCharacterComponent,
+      FocusDirective
   ],
   imports: [
     CommonModule,

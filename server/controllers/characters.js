@@ -5,10 +5,24 @@ const handleError = function(err) {
 }
 
 const put = function update(req, res) {
-    req.character.name = req.body.name
-    req.character.save()
+    var character = req.character;
 
-    res.json(req.character)
+    console.log("Character Found")
+    console.log(character)
+
+    console.log("Character to update")
+    console.log(req.body)
+
+    delete req.body._id
+    delete req.body.owner_id
+
+    for (var key in req.body) {
+        character[key] = req.body[key]
+    }
+
+    character.save()
+
+    res.json(character)
 }
 
 const get = function get(req, res) {
@@ -50,7 +64,8 @@ const getById = function getById(req, res) {
 }
 
 const findById = function (req, res, next) {
-    let query = { _id: req.params._id, owner_id: req.session.user._id }
+    let query = { _id: req.params.id, owner_id: req.session.user._id }
+    console.log(query)
     let handleResult = function(err, character) {
         if (err) {
             res.status(500).send(err)
