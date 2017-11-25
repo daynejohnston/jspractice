@@ -9,9 +9,10 @@
                       *ngIf="editingName" 
                       (blur)="toggleNameEdit()" 
                       placeholder="Character Name" />
-    </div>
+    </div> <!-- /card-header -->
 
     <div class="card-body">
+
       <div class="row">
         <div class="col-sm">
           <div class="form-group">
@@ -23,7 +24,8 @@
             </select>
           </div>
         </div>
-      </div>
+      </div> <!-- /row -->
+
       <div class="row">
         <div class="col-sm">
           <div class="form-group">
@@ -53,10 +55,10 @@
                   <input class="form-control form-control-sm" type="number" name="flat" [(ngModel)]="model.armorClass.flatFooted">
                   <small class="form-text text-muted">Flat Footed</small>
               </div>
-            </div>
+            </div> <!-- /row -->
 
           </div>
-        </div>
+        </div> <!-- /col-sm -->
 
         <div class="col-sm">
           <div class="form-group">
@@ -75,21 +77,28 @@
                 <input class="form-control form-control-sm" type="number" name="will" [(ngModel)]="model.savingThrow.will">
                 <small class="form-text text-muted">Will</small>
               </div>
-            </div>
+            </div> <!-- /row -->
+          </div>
+        </div> <!-- /col-sm -->
+
+      </div> <!-- /row -->
+
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label>Tags</label>
+            <textarea class="form-control form-control-sm" name="tags" [(ngModel)]="model.tagsDisplay"></textarea>
           </div>
         </div>
+      </div> <!-- /row -->
 
-      </div>
-    </div>
+    </div> <!-- /card-body -->
 
     <div class="card-footer">
       <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
       <button type="submit" class="btn btn-outline-success float-right">Save</button>
-    </div>
+    </div> <!-- /card-footer -->
 
   </div>
 
-  
 </form>
-
-Model Name: {{ model.name }}

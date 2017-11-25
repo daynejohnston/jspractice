@@ -1,5 +1,3 @@
-
-
 export class Character {
     public _id: string;
     public name: string;
@@ -16,6 +14,8 @@ export class Character {
         will: null
     };
     public initiativeBonus: number;
+    public tags: string[];
+    public tagsDisplay: string;
 
     constructor() { }
 }

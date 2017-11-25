@@ -1,0 +1,7 @@
+.tag {
+    display: inline-block;
+    border: solid 1px;
+    padding: 0 10px;
+    margin: 2px;
+    background-color: greenyellow;
+}

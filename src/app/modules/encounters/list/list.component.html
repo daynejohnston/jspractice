@@ -1,3 +1,13 @@
-<p>
-  list works!!
-</p>
+<div class="container">
+    
+      <div *ngIf="showList">
+          <button class="btn btn-outline-success float-right" (click)="onShowForm()">Add Encounter</button>
+          <app-encounters-list (showForm)="onShowForm($event)"></app-encounters-list>
+      </div>
+    
+      <div *ngIf="!showList">
+        <app-add-encounter (showForm)="onShowForm()" [model]="model"></app-add-encounter>
+      </div>
+
+        
+    </div>

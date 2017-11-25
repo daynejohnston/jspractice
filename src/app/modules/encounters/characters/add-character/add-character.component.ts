@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Character } from '../_models/character.model';
+import { Character } from '../../_models/character.model';
 import { NgForm } from '@angular/forms';
-import { CharacterService } from '../_services/character.service';
+import { CharacterService } from '../../_services/character.service';
 
 @Component({
   selector: 'app-add-character',
@@ -17,8 +17,12 @@ export class AddCharacterComponent implements OnInit {
   characterTypes = ['Enemy', 'NPC', 'Player'];
 
   ngOnInit() {
-    if (!this.model) { this.model = new Character(); }
-    this.editingName = true;
+    if (this.model) {
+      this.model.tagsDisplay = this.model.tags.join(' ');
+    } else {
+      this.model = new Character();
+      this.editingName = true;
+    }
   }
 
   submitForm(form: NgForm) {

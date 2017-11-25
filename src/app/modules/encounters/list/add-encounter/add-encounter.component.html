@@ -1,0 +1,88 @@
+<form #form="ngForm" (submit)="submitForm(form)" novalidate>
+  <div class="card">
+    <div class="card-header">
+      <h4 name="encounterTitle" (click)="toggleNameEdit()" *ngIf="!editingName">{{ model.name || "Encounter Name" }}</h4>
+      <input appFocus type="text" 
+                      class="form-control form-control-lg"
+                      name="name" 
+                      [(ngModel)]="model.name" 
+                      *ngIf="editingName" 
+                      (blur)="toggleNameEdit()" 
+                      placeholder="Encounter Name" />
+      <button type="button" class="btn btn-outline-danger float-right" *ngIf="model._id" (click)="remove(model)">Delete</button>
+    </div> <!-- /card-header -->
+
+    <div class="card-body">
+
+      <div class="row">
+        <div class="form-group">
+          <label>Search</label>
+          <input type="text" class="form-control form-control-sm" name="search" [(ngModel)]="searchText"/>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm">
+
+          <div class="table-responsive pt-2 character-list">
+            <table class="table table-hover table-sm">
+              <thead>
+                <tr>
+                  <th>Character Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let character of characters | nameAndTags: searchText">
+                  <td>{{ character.name }}</td>
+                  <td><button type="button" class="btn btn-outline-primary" (click)="addCharacter(character)">Add</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div> <!-- /table -->
+
+        </div> <!-- /col-sm -->
+
+        <div class="col-sm">
+          <div class="table-responsive pt-2 character-list">
+            <table class="table table-hover table-sm">
+              <thead>
+                <tr>
+                  <th>Character Name</th>
+                  <th>Count</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let character of selected">
+                  <td>{{ character.name }}</td>
+                  <td>({{ character.count }})</td>
+                  <td><button type="button" class="btn btn-outline-danger" (click)="removeCharacter(character)">Remove</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div> <!-- /table -->
+        </div> <!-- /col-sm -->
+
+      </div> <!-- /row -->
+      <hr/>
+      <div class="row mt-2">
+        <div class="col-sm">
+          <div class="form-group">
+            <label>Tags</label>
+            <textarea class="form-control form-control-sm" name="tags" [(ngModel)]="model.tagsDisplay"></textarea>
+          </div>
+        </div>
+      </div> <!-- /row -->
+
+    </div> <!-- /card-body -->
+
+    <div class="card-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-outline-success float-right">Save</button>
+    </div> <!-- /card-footer -->
+
+  </div>
+
+</form>

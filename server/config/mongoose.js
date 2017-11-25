@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const userModel = require('../mongoose/models/User')
 require('../mongoose/models/Character')
+require('../mongoose/models/Encounter')
 const bluebird = require('bluebird')
 
 

@@ -16,6 +16,7 @@ import { SidebarComponent } from './components/sidebar/index';
 import { AlertComponent } from './components/alert/index';
 
 import { AlertService } from './_services/index';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AlertService } from './_services/index';
     RegisterComponent,
     NavbarComponent,
     SidebarComponent,
-    AlertComponent
+    AlertComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

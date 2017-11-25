@@ -7,9 +7,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let character of characters">
-          <td (click)="onEditCharacter(character)">{{ character.name }}</td>
-          <td></td>
+        <tr *ngFor="let character of characters" (click)="onEditCharacter(character)">
+          <td>{{ character.name }}</td>
+          <td><span *ngFor="let tag of character.tags" class="tag"> {{ tag }}</span></td>
         </tr>
       </tbody>
   </table>
