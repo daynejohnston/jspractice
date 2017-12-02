@@ -9,6 +9,7 @@
                       *ngIf="editingName" 
                       (blur)="toggleNameEdit()" 
                       placeholder="Character Name" />
+      <button type="button" class="btn btn-outline-danger float-right" *ngIf="model._id" (click)="remove(model)">Delete</button>
     </div> <!-- /card-header -->
 
     <div class="card-body">
@@ -88,6 +89,7 @@
           <div class="form-group">
             <label>Tags</label>
             <textarea class="form-control form-control-sm" name="tags" [(ngModel)]="model.tagsDisplay"></textarea>
+            <small class="form-text text-muted">Separate tags with spaces</small>
           </div>
         </div>
       </div> <!-- /row -->

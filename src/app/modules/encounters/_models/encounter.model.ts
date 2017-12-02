@@ -2,7 +2,9 @@ import { Character } from './character.model';
 
 export class Encounter {
 
-    constructor() { }
+    constructor() {
+        this.characters = [];
+     }
 
     public _id: string;
     public name: string;

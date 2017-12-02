@@ -14,11 +14,10 @@ export class CharacterService {
 
     private extractData(res: Response) {
         const body = res.json();
-        if (body.length > 1) {
-            body.forEach(c => this.updateCharactersWith(c));
-        } else {
-            this.updateCharactersWith(body);
-        }
+
+        (Array.isArray(body)) ? body.forEach(c => this.updateCharactersWith(c))
+            : this.updateCharactersWith(body);
+
         return body || {};
     }
 
@@ -65,6 +64,18 @@ export class CharacterService {
         return this.http.put(url, body, options)
                     .map(this.extractData.bind(this))
                     .catch(this.handleError);
+    }
+
+    remove(character: Character): Observable<any> {
+        const url = `/api/characters/${character._id}`;
+
+        return this.http.delete(url)
+            .map(() => {
+                const index = this.characters.indexOf(character);
+                this.characters.splice(index, 1);
+                return `Removed character ID: ${character._id}`;
+            })
+            .catch(this.handleError);
     }
 
     getAll(): Observable<any> {

@@ -14,16 +14,16 @@ export class EncounterService {
 
   private extractData(res: Response) {
     const body = res.json();
-    if (body.length > 1) {
-        body.forEach(c => this.updateEncountersWith(c));
-    } else {
-        this.updateEncountersWith(body);
-    }
+
+    (Array.isArray(body)) ? body.forEach(e => this.updateEncountersWith(e))
+      : this.updateEncountersWith(body);
+
     return body || {};
+
   }
 
   private updateEncountersWith(encounter) {
-    const found = this.encounters.filter(c => c._id === encounter._id)[0];
+    const found = this.encounters.filter(e => e._id === encounter._id)[0];
     if (found) {
         const index = this.encounters.indexOf(found);
         this.encounters.splice(index, 1, encounter);

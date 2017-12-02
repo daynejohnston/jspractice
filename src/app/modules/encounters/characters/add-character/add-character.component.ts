@@ -53,6 +53,16 @@ export class AddCharacterComponent implements OnInit {
       );
   }
 
+  public remove(character: Character) {
+    this.characterService.remove(character)
+      .subscribe(
+      data => {
+        this.showForm.emit();
+      },
+      err => console.log('error: ', err)
+      );
+  }
+
   cancel(): void {
     this.showForm.emit();
   }

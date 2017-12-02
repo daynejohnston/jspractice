@@ -1,25 +1,24 @@
-class ArmorClass {
-    public base: number;
-    public touch: number;
-    public flatFooted: number;
-}
-
-class SavingThrow {
-    public fortitude: number;
-    public reflex: number;
-    public will: number;
-}
-
 export class Character {
     public _id: string;
     public name: string;
     public characterType: string;
     public maxHitPoints: number;
-    public armorClass: ArmorClass;
-    public savingThrow: SavingThrow;
+    public armorClass: {
+        base: number;
+        touch: number;
+        flatFooted: number;
+    };
+    public savingThrow: {
+        fortitude: number;
+        reflex: number;
+        will: number;
+    };
     public initiativeBonus: number;
     public tags: string[];
     public tagsDisplay: string;
 
-    constructor() { }
+    constructor() {
+        this.armorClass = { base: null, touch: null, flatFooted: null };
+        this.savingThrow = { fortitude: null, reflex: null, will: null };
+     }
 }

@@ -17,8 +17,8 @@ const put = function update(req, res) {
     character.tags = character.tags.sort((a, b) => a > b)
 
     character.save()
-
-    res.json(character)
+            .then(() => res.status(200).json(character))
+            .catch((err) => res.status(500).send(err))
 }
 
 const get = function get(req, res) {
@@ -42,8 +42,8 @@ const post = function post(req, res) {
     character.owner_id = req.session.user._id
     character.tags = character.tags.sort((a, b) => a > b)    
     character.save()
-
-    res.status(201).send(character)
+            .then(() => res.status(201).send(character))
+            .catch((err) => res.status(500).send(err))
 }
 
 const remove = function remove(req, res) {

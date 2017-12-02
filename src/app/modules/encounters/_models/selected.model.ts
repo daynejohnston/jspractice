@@ -1,6 +1,6 @@
 export class Selected {
 
-    constructor(name, count) {
+    constructor(name: string, count: number) {
         this.name = name;
         this.count = count;
      }
