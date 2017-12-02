@@ -10,7 +10,7 @@
         <tr *ngFor="let encounter of encounters" (click)="onEditEncounter(encounter)">
           <td>
             {{ encounter.name }}
-            <small *ngIf="encounter.characters" class="ml-2 character-list">Characters: 
+            <small *ngIf="encounter.characters.length > 0" class="ml-2 character-list">Characters: 
               <span *ngFor="let character of encounter.characters | uniqueCharacters; let isLast = last">
                 {{ character.name }} ({{ character.count }}) {{isLast ? '' : ', '}}
               </span> </small>

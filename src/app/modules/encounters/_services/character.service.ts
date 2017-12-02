@@ -33,6 +33,12 @@ export class CharacterService {
 
     private handleError(error: any) {
         console.log('error: ', error);
+
+        if (error._body) {
+            const errors = JSON.parse(error._body);
+            return Observable.throw(errors.message);
+        }
+
         return Observable.throw(error.statusText);
     }
 
