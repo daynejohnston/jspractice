@@ -9,7 +9,7 @@ import { Encounter } from '../_models/encounter.model';
 })
 export class ListComponent implements OnInit {
 
-  private showList = true;
+  public showList = true;
   private model: Character;
 
   constructor() { }

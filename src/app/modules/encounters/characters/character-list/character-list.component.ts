@@ -10,7 +10,7 @@ import { Character } from '../../_models/character.model';
 
 export class CharacterListComponent implements OnInit {
   @Output() showForm: EventEmitter<Character> = new EventEmitter<Character>();
-  private characters: Character[] = [];
+  public characters: Character[] = [];
 
   constructor(private characterService: CharacterService) { }
 

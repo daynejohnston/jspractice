@@ -19,9 +19,9 @@ export class AddEncounterComponent implements OnInit {
   constructor(private encounterService: EncounterService,
               private characterService: CharacterService) { }
 
-  private editingName: boolean;
-  private characters: Character[] = [];
-  private selected: Selected[] = [];
+  public editingName: boolean;
+  public characters: Character[] = [];
+  public selected: Selected[] = [];
 
   public searchText = '';
 

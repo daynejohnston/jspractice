@@ -11,7 +11,7 @@ import { Encounter } from '../../_models/encounter.model';
 
 export class EncountersListComponent implements OnInit {
   @Output() showForm: EventEmitter<Encounter> = new EventEmitter<Encounter>();
-  private encounters: Encounter[] = [];
+  public encounters: Encounter[] = [];
 
   constructor(private encounterService: EncounterService) { }
 

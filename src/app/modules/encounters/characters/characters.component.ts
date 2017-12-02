@@ -8,7 +8,7 @@ import { Character } from '../_models/character.model';
 })
 export class CharactersComponent implements OnInit {
 
-  private showList = true;
+  public showList = true;
   private model: Character;
 
   constructor() { }
