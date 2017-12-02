@@ -21,6 +21,7 @@
             <div class="card-header">
               <h5>Available Characters</h5>
             </div>
+
           
             <div class="card-body">
               <div class="row">
@@ -30,9 +31,9 @@
                 </div>
               </div>
 
-              <div class="row">
+              <div class="row character-list">
                 
-                <div class="table-responsive pt-2 character-list">
+                <div class="table-responsive pt-2">
                   <table class="table table-hover table-sm">
                     <thead>
                       <tr>
@@ -44,7 +45,7 @@
                       <tr *ngFor="let character of characters | nameAndTags: searchText">
                         <td>{{ character.name }}</td>
                         <td>
-                          <button type="button" class="btn btn-outline-primary" (click)="addCharacter(character)">Add</button>
+                          <button type="button" class="btn btn-outline-primary btn-sm" (click)="addCharacter(character)">Add</button>
                         </td>
                       </tr>
                     </tbody>
@@ -63,8 +64,8 @@
               <h5>Selected Characters</h5>
             </div>
 
-            <div class="card-body">
-              <div class="table-responsive pt-2 character-list">
+            <div class="card-body character-list">
+              <div class="table-responsive pt-2">
                 <table class="table table-hover table-sm">
                   <thead>
                     <tr>
@@ -78,7 +79,7 @@
                       <td>{{ character.name }}</td>
                       <td>({{ character.count }})</td>
                       <td>
-                        <button type="button" class="btn btn-outline-danger" (click)="removeCharacter(character)">Remove</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeCharacter(character)">Remove</button>
                       </td>
                     </tr>
                   </tbody>
@@ -96,6 +97,7 @@
           <div class="form-group">
             <label>Tags</label>
             <textarea class="form-control form-control-sm" name="tags" [(ngModel)]="model.tagsDisplay"></textarea>
+            <small class="form-text text-muted">Separate tags with spaces</small>
           </div>
         </div>
       </div> <!-- /row -->
