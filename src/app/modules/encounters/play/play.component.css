@@ -1,0 +1,13 @@
+.round-tracker {
+    border: solid black 1px;
+    text-align: center;
+}
+
+.notes {
+    min-height: 300px;
+    width: 100%;
+}
+
+.player {
+    border: solid black 1px;
+}

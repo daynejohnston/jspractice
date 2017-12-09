@@ -1,3 +1,22 @@
-<p>
-  play works!
-</p>
+<div class="card combat-pad">
+  <div class="card-body round-tracker">
+    <span *ngFor="let round of rounds" class="mx-2">{{ round }}</span>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3">
+        <p class="text-center">Notes</p>
+        <textarea class="notes"></textarea>          
+      </div>
+      <div class="col">
+        <p class="text-center">Initiative</p>
+        <div class="row">
+          <div class="col player">
+            Some players
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
