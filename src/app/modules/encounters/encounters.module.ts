@@ -26,6 +26,7 @@ import { FocusDirective } from './_directives/focus.directive';
 import { AddEncounterComponent } from './list/add-encounter/add-encounter.component';
 import { NameAndTagsPipe } from './_pipes/name-and-tags.pipe';
 import { UniqueCharactersPipe } from './_pipes/unique-characters.pipe';
+import { SortPipe } from './_pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UniqueCharactersPipe } from './_pipes/unique-characters.pipe';
       EncountersListComponent,
       AddEncounterComponent,
       NameAndTagsPipe,
-      UniqueCharactersPipe
+      UniqueCharactersPipe,
+      SortPipe
   ],
   imports: [
     CommonModule,

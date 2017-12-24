@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Encounter } from '../_models/encounter.model';
+import { Character } from '../_models/character.model';
 
 @Injectable()
 export class EncounterService {
@@ -12,17 +13,27 @@ export class EncounterService {
 
   private encounters: Encounter[] = [];
 
-  private extractData(res: Response) {
+  private extractData(res: Response): Encounter[] {
     const body = res.json();
+    const encounters = [];
 
-    (Array.isArray(body)) ? body.forEach(e => this.updateEncountersWith(e))
-      : this.updateEncountersWith(body);
+    if (Array.isArray(body)) {
+      body.forEach(e => {
+        e.characters = e.characters.map(c => Object.assign(new Character(), c));
+        encounters.push(Object.assign(new Encounter(), e));
+        this.updateEncountersWith(e);
+      });
+    } else {
+      const encounter = Object.assign(new Encounter(), body);
+      encounter.characters = body.characters.map(c => Object.assign(new Character(), c));
+      encounters.push(encounter);
+      this.updateEncountersWith(encounter);
+    }
 
-    return body || {};
-
+    return encounters;
   }
 
-  private updateEncountersWith(encounter) {
+  private updateEncountersWith(encounter: Encounter) {
     const found = this.encounters.filter(e => e._id === encounter._id)[0];
     if (found) {
         const index = this.encounters.indexOf(found);
@@ -88,7 +99,7 @@ export class EncounterService {
               .catch(this.handleError);
   }
 
-  getAll(): Observable<any> {
+  getAll(): Observable<Encounter[]> {
     if (this.shouldRefreshEncounterList) {
       this.shouldRefreshEncounterList = false;
       this.encounters = [];

@@ -17,8 +17,15 @@ export class Character {
     public tags: string[];
     public tagsDisplay: string;
 
+    public initiative: number;
+
     constructor() {
         this.armorClass = { base: null, touch: null, flatFooted: null };
         this.savingThrow = { fortitude: null, reflex: null, will: null };
+     }
+
+     public rollInitiative(): number {
+        this.initiative = Math.floor(Math.random() * 21) + this.initiativeBonus;
+        return this.initiative;
      }
 }

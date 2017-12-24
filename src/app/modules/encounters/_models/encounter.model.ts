@@ -14,4 +14,10 @@ export class Encounter {
     public round: number;
     public usesStaticInitiative: boolean;
 
+    startEncounter(): void {
+        if (this.round === 0) {
+            this.characters.forEach(c => c.rollInitiative());
+          }
+    }
+
 }

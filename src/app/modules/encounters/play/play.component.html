@@ -1,4 +1,16 @@
-<div class="card combat-pad">
+<div class="card" *ngIf="!encounterSelected">
+  <div class="card-header">
+    <h4>Select an Encounter</h4>
+  </div>
+  <div class="card-body">
+    <div class="list-group">
+      <button *ngFor="let encounter of encounters" class="list-group-item list-group-item-action"
+              (click)="startEncounter(encounter)">{{ encounter.name }}</button>
+    </div>
+  </div>
+</div>
+
+<div class="card combat-pad" *ngIf="encounterSelected">
   <div class="card-body round-tracker">
     <span *ngFor="let round of rounds" class="mx-2">{{ round }}</span>
   </div>
@@ -12,11 +24,17 @@
       <div class="col">
         <p class="text-center">Initiative</p>
         <div class="row">
-          <div class="col player">
-            Some players
+          <div class="col characters">
+            <div *ngFor="let character of encounter.characters | sort:'initiative'">{{ character.name }} {{ character.initiative }}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="card-footer">
+    <button class="btn btn-default" (click)="closeEncounter()">Close</button>
+    <button class="btn btn-success" (click)="nextRound()">Next Round</button>
+  </div>
+
 </div>
